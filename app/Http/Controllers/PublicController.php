@@ -8,7 +8,7 @@ use App\Models\Order;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Models\Item;
-
+use App\Models\OrderItems;
 
 class PublicController extends Controller
 {
@@ -37,12 +37,9 @@ class PublicController extends Controller
         return redirect(route('index'));
     }
 
-
-
-
     public function creaOrdine()
     {
-        $items= Item::all();
+        $items = Item::all();
         $contacts = Contact::all();
         return view('creaOrdine', compact('contacts', 'items'));
 
@@ -54,6 +51,7 @@ class PublicController extends Controller
     public function storageOrder(Request $request)
     {
 
+        $selectedItems = $request->input('item_id');
 
         $order = Order::create([
 
@@ -61,25 +59,25 @@ class PublicController extends Controller
             'quantity' => $request->input('quantity'),
             'weight' => $request->input('weight'),
             'time' => $request->input('time'),
-            'contact_id' => $request->input('contact_id'),
-            'item_id' => $request->input('item_id')
-    
-
+           'contact_id' => $request->input('contact_id'),
         ]);
 
+        foreach ($selectedItems as $item_id) {
+
+            OrderItems::create([
+
+                'order_id' => $order->id,
+                'item_id' => $item_id
+
+            ]);
+        }
+        $order->update(['order_items_id' => $order->orderItems->id]);
+
+
         return redirect(route('index'))->with('success', 'Ordine creato con successo!');
+
+
+
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

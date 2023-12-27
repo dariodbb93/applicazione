@@ -3,7 +3,7 @@
     <div class="col-12 d-flex justify-content-center">
         <form action="{{ route('storageOrder') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <select id="contactsDropdown" name="item_id">
+            <select id="contactsDropdown" name="item_id[]" multiple>
                 @foreach ($items as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
