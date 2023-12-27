@@ -21,8 +21,15 @@ class Order extends Model
         return $this->belongsTo(Contact::class, 'order_item_id');
     }
 
+    // public function orderItems()
+    // {
+    //     return $this->hasOne(OrderItems::class, 'order_id');
+    // }
+    
+
     public function orderItems()
-    {
-        return $this->hasOne(OrderItems::class, 'order_id');
-    }
+{
+    return $this->hasMany(OrderItems::class);
+}
+
 }

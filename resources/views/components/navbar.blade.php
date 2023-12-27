@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('creaOrdine') }}"> creaOrdine </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route('view') }}"> view </a>
+                </li>
         </div>
     </div>
 </nav>

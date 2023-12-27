@@ -59,7 +59,7 @@ class PublicController extends Controller
             'quantity' => $request->input('quantity'),
             'weight' => $request->input('weight'),
             'time' => $request->input('time'),
-           'contact_id' => $request->input('contact_id'),
+            'contact_id' => $request->input('contact_id'),
         ]);
 
         foreach ($selectedItems as $item_id) {
@@ -71,13 +71,37 @@ class PublicController extends Controller
 
             ]);
         }
-        $order->update(['order_items_id' => $order->orderItems->id]);
+        $order->update(['order_items_id' => $order->orderItems()->orderBy('id')->first()->id]);
 
 
         return redirect(route('index'))->with('success', 'Ordine creato con successo!');
+    }
 
 
 
+    public function view()
+    {
 
+        $items = Item::all();
+        // $orders = Order::all();
+        $orders = Order::with(['contact', 'orderItems.item'])->get();
+
+
+
+        $orderDetails = $orders->map(function ($order) {
+            return [
+                'order_id' => $order->id,
+                'quantity' => $order->quantity,
+                'weight' => $order->weight,
+                'time' => $order->time,
+                'contact' => $order->contact->name,  // Assume 'name' is the contact attribute you want
+                'items' => $order->orderItems->map(function ($orderItem) {
+                    return optional($orderItem->item)->name;
+                })->implode(', ')
+                
+                            ];
+        });
+
+        return view('view', compact('orderDetails'));
     }
 }

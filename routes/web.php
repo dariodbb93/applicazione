@@ -22,3 +22,4 @@ Route::post('/storageContact', [PublicController:: class, 'storageContact'])->na
 // Route::delete('/destroy/{upload}', [PublicController:: class, 'destroy'])->name('destroy');
 Route::get('/creaOrdine', [PublicController:: class, 'creaOrdine'])->name('creaOrdine');
 Route::post('/storageOrder', [PublicController:: class, 'storageOrder'])->name('storageOrder');
+Route::get('/view', [PublicController:: class, 'view'])->name('view');
