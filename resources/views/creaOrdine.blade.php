@@ -1,7 +1,7 @@
 <x-layout>
 
     <div class="col-12 d-flex justify-content-center">
-        <form action="{{ route('storageOrder') }}" method="post" enctype="multipart/form-data">
+        <form action="{{route('storageOrder') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <select id="contactsDropdown" name="item_id[]" multiple class="form-select" multiple aria-label="Multiple select example">
                 @foreach ($items as $item)
@@ -11,7 +11,7 @@
 
             <div class="mb-3">
                 <label for="time" class="form-label">Time</label>
-                <input type="text" class="form-control" id="time" name="time" required>
+                <input type="text" class="form-control" id="time" name="time">
             </div>
 
             @foreach ($items as $item)
@@ -30,26 +30,28 @@
                 @endforeach
             </select>
             <div class="col-12">
-                <button class="btn btn-secondary" type="submit"> Salva il Contatto </button>
+                <button class="btn btn-secondary" type="submit"> Crea Ordine </button>
             </div>
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#contactsDropdown').change(function () {
-                var selectedItems = $(this).val();
-
-                // Nascondi tutti i campi di input degli articoli
-                $('.item-fields').hide();
-
-                // Mostra solo i campi di input per gli articoli selezionati
-                selectedItems.forEach(function (itemId) {
-                    $('#item_' + itemId).show();
-                });
-            });
-        });
-    </script>
 
 </x-layout>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#contactsDropdown').change(function () {
+
+            var selectedItems = $(this).val();
+
+            // Nascondi tutti i campi di input degli articoli
+            $('.item-fields').hide();
+
+            // Mostra solo i campi di input per gli articoli selezionati
+            selectedItems.forEach(function (itemId) {
+                $('#item_' + itemId).show();
+            });
+        });
+    });
+</script>

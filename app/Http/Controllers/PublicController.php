@@ -27,7 +27,6 @@ class PublicController extends Controller
 
     public function storageContact(Request $request)
     {
-
         $name = $request->input('name');
         $contatti = Contact::create([
             'name' => $name
@@ -50,6 +49,7 @@ class PublicController extends Controller
 
     public function storageOrder(Request $request)
     {
+
 
         $selectedItems = $request->input('item_id');
 
