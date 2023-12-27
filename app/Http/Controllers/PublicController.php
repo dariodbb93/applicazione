@@ -54,10 +54,6 @@ class PublicController extends Controller
         $selectedItems = $request->input('item_id');
 
         $order = Order::create([
-
-
-            'quantity' => $request->input('quantity'),
-            'weight' => $request->input('weight'),
             'time' => $request->input('time'),
             'contact_id' => $request->input('contact_id'),
         ]);
@@ -67,7 +63,9 @@ class PublicController extends Controller
             OrderItems::create([
 
                 'order_id' => $order->id,
-                'item_id' => $item_id
+                'item_id' => $item_id,
+                'quantity' => $request->input("quantity.$item_id"),
+                'weight' => $request->input("weight.$item_id"),
 
             ]);
         }
@@ -87,21 +85,18 @@ class PublicController extends Controller
         $orders = Order::with(['contact', 'orderItems.item'])->get();
 
 
-
         $orderDetails = $orders->map(function ($order) {
             return [
                 'order_id' => $order->id,
-                'quantity' => $order->quantity,
-                'weight' => $order->weight,
                 'time' => $order->time,
-                'contact' => $order->contact->name,  // Assume 'name' is the contact attribute you want
+                'contact' => $order->contact->name,
                 'items' => $order->orderItems->map(function ($orderItem) {
                     return optional($orderItem->item)->name;
-                })->implode(', ')
-                
-                            ];
+                })->implode(', '),
+                'quantity' => $order->orderItems->sum('quantity'), // Modifica qui
+                'weight' => $order->orderItems->sum('weight'), // Modifica qui
+            ];
         });
-
         return view('view', compact('orderDetails'));
     }
 }

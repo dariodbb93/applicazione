@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('Orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantity');
-            $table->float('weight');
             $table->time('time');
             $table->unsignedBigInteger('contact_id'); // Aggiunta la colonna contact_id
             $table->foreign('contact_id')->references('id')->on('Contacts')->onDelete('cascade');

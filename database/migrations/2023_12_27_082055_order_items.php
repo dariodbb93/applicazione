@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('item_id');
+            $table->integer('quantity');
+            $table->float('weight');
             $table->foreign('order_id')->references('id')->on('Orders')->onDelete('cascade');
             $table->foreign('item_id')->references('id')->on('Items')->onDelete('cascade');
             // Altri campi, se necessario
