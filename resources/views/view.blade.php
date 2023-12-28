@@ -3,12 +3,12 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Id Ordine</th>
-                <th scope="col">Quantità</th>
-                <th scope="col">Peso</th>
-                <th scope="col">Tempo</th>
-                <th scope="col">Cliente</th>
-                <th scope="col">Articoli</th>
+                <th scope="col">Identificativo Ordine</th>
+                <th scope="col">Quantità (Pz) </th>
+                <th scope="col">Peso (Kg)</th>
+                <th scope="col">Tempo (hh:mm) </th>
+                <th scope="col">Cliente </th>
+                <th scope="col">Articoli </th>
             </tr>
         </thead>
         <tbody>

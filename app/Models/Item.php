@@ -9,8 +9,17 @@ class Item extends Model
 {
     use HasFactory;
 
-    protected $table = 'Items'; // Assicurati che il nome della tabella sia corretto
+    protected $table = 'Items';
 
-    protected $fillable = ['description'];
+    protected $fillable = ['name'];
+
+
+    public function orderItems()
+{
+    return $this->hasMany(OrderItems::class);
+}
+
+
+
 
 }

@@ -3,24 +3,24 @@
     <div class="col-12 d-flex justify-content-center">
         <form action="{{route('storageOrder') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <select id="contactsDropdown" name="item_id[]" multiple class="form-select" multiple aria-label="Multiple select example">
+            <select id="contactsDropdown" name="item_id[]" multiple class="form-select mt-3" multiple aria-label="Multiple select example">
                 @foreach ($items as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
             </select>
 
             <div class="mb-3">
-                <label for="time" class="form-label">Time</label>
+                <label for="time" class="form-label"> Ora di consegna </label>
                 <input type="text" class="form-control" id="time" name="time">
             </div>
 
             @foreach ($items as $item)
                 <div class="mb-3 item-fields" id="item_{{ $item->id }}" style="display: none;">
                     <label for="quantity_{{ $item->id }}" class="form-label">Quantità per {{ $item->name }}</label>
-                    <input type="text" class="form-control" id="quantity_{{ $item->id }}" name="quantity[{{ $item->id }}]" required>
+                    <input type="text" class="form-control" id="quantity_{{ $item->id }}" name="quantity[{{ $item->id }}]">
 
-                    <label for="weight_{{ $item->id }}" class="form-label">Peso per {{ $item->name }}</label>
-                    <input type="text" class="form-control" id="weight_{{ $item->id }}" name="weight[{{ $item->id }}]" required>
+                    <label for="weight_{{ $item->id }}" class="form-label">Peso in Kg per {{ $item->name }}</label>
+                    <input type="text" class="form-control" id="weight_{{ $item->id }}" name="weight[{{ $item->id }}]">
                 </div>
             @endforeach
 
@@ -30,13 +30,11 @@
                 @endforeach
             </select>
             <div class="col-12">
-                <button class="btn btn-secondary" type="submit"> Crea Ordine </button>
+                <button class="btn btn-secondary mt-3" type="submit"> Crea Ordine </button>
             </div>
         </form>
     </div>
 
-
-</x-layout>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -55,3 +53,5 @@
         });
     });
 </script>
+
+</x-layout>

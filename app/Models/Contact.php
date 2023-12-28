@@ -12,4 +12,14 @@ class Contact extends Model
     protected $table = 'Contacts'; // Assicurati che il nome della tabella sia corretto
 
     protected $fillable = ['name'];
+
+
+    public function Order()
+{
+    return $this->hasMany(Order::class);
+}
+
+
+
+
 }

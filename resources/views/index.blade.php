@@ -4,7 +4,7 @@
     <p class="text-center">Qui c'è la lista delle anagrafiche (contatti)</p>
     <hr>
 
-    <label for="contactsDropdown">Seleziona un contatto:</label>
+    <label for="contactsDropdown">Anagrafica contatti:</label>
     <select id="contactsDropdown" name="contact">
         @foreach ($contacts as $contact)
             <option value="{{ $contact->id }}">{{ $contact->name }}</option>
