@@ -10,8 +10,8 @@
             </select>
 
             <div class="mb-3">
-                <label for="time" class="form-label"> Ora di consegna </label>
-                <input type="text" class="form-control" id="time" name="time">
+                <label for="time" class="form-label"> Data di ritiro </label>
+                <input type="text" class="form-control" id="time" name="ritiro">
             </div>
 
             @foreach ($items as $item)
@@ -26,9 +26,11 @@
 
             <select id="contactsDropdown" name="contact_id">
                 @foreach ($contacts as $contact)
-                    <option value="{{ $contact->id }}">{{ $contact->name }}</option>
+                    <option value="{{ $contact->id }}">{{ $contact->nameContact }}</option>
                 @endforeach
             </select>
+
+
             <div class="col-12">
                 <button class="btn btn-secondary mt-3" type="submit"> Crea Ordine </button>
             </div>

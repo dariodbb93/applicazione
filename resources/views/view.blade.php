@@ -4,26 +4,32 @@
         <thead>
             <tr>
                 <th scope="col">Identificativo Ordine</th>
-                <th scope="col">Quantità (Pz) </th>
+                <th scope="col">Quantità (Pz per i decimali usare il '.' (es. 0.5)) </th>
                 <th scope="col">Peso (Kg)</th>
-                <th scope="col">Tempo (hh:mm) </th>
+                <th scope="col"> Data di ritiro </th>
                 <th scope="col">Cliente </th>
                 <th scope="col">Articoli </th>
             </tr>
         </thead>
         <tbody>
-            @foreach($orderDetails as $order)
+            @foreach ($orderDetails as $order)
                 <tr>
                     <td>{{ $order['order_id'] }}</td>
                     <td>{{ $order['quantity'] }}</td>
                     <td>{{ $order['weight'] }}</td>
-                    <td>{{ $order['time'] }}</td>
+                    <td>{{ $order['ritiro'] }}</td>
                     <td>{{ $order['contact'] }}</td>
                     <td>{{ $order['items'] }}</td>
+                    <td>
+                        <form action="{{ route('destroy', $order['order_id']) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-danger mt-1" type="submit"> Elimina </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 
 </x-layout>
-

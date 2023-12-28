@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 
 
+use App\Models\Item;
 use App\Models\Order;
 use App\Models\Contact;
-use Illuminate\Http\Request;
-use App\Models\Item;
 use App\Models\OrderItems;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class PublicController extends Controller
 {
@@ -27,9 +29,9 @@ class PublicController extends Controller
 
     public function storageContact(Request $request)
     {
-        $name = $request->input('name');
-        $contatti = Contact::create([
-            'name' => $name
+        $nameContact = $request->input('nameContact');
+        $newContact = Contact::create([
+            'nameContact' => $nameContact
 
         ]);
 
@@ -54,8 +56,9 @@ class PublicController extends Controller
         $selectedItems = $request->input('item_id');
 
         $order = Order::create([
-            'time' => $request->input('time'),
+
             'contact_id' => $request->input('contact_id'),
+            'ritiro' => Carbon::parse($request->input('ritiro')),
         ]);
 
         foreach ($selectedItems as $item_id) {
@@ -88,8 +91,8 @@ class PublicController extends Controller
         $orderDetails = $orders->map(function ($order) {
             return [
                 'order_id' => $order->id,
-                'time' => $order->time,
-                'contact' => $order->contact->name,
+                'ritiro' => $order->ritiro,
+                'contact' => $order->contact->nameContact,
                 'items' => $order->orderItems->map(function ($orderItem) {
                     return optional($orderItem->item)->name;
                 })->implode(', '),
@@ -98,5 +101,36 @@ class PublicController extends Controller
             ];
         });
         return view('view', compact('orderDetails'));
+    }
+
+
+
+    public function destroy($order)
+    {
+        $orderItem = OrderItems::find($order);
+
+        if ($orderItem) {
+            $orderItem->delete();
+            return redirect(route('view'));
+        } else {
+            // Gestisci il caso in cui l'ordine non sia stato trovato
+        }
+    }
+
+
+     public function riepilogo()
+     {
+
+        // $query = 'SELECT "Orders".id, "Orders".created_at, "Orders".ritiro, "Items".name, "Contacts".nameContact, "Order_items".quantity, "Order_items".weight
+        // FROM "Orders"
+        // INNER JOIN "Order_items" ON "Orders".order_items_id = "Order_items".id
+        // INNER JOIN "Items" ON "Order_items".item_id = "Items".id
+        // INNER JOIN "Contacts" ON "Orders".contact_id = "Contacts".id';
+
+
+        // $result = DB::select($query);
+
+
+   return view('riepilogo');
     }
 }

@@ -7,7 +7,7 @@
     <label for="contactsDropdown">Anagrafica contatti:</label>
     <select id="contactsDropdown" name="contact">
         @foreach ($contacts as $contact)
-            <option value="{{ $contact->id }}">{{ $contact->name }}</option>
+            <option value="{{ $contact->id }}">{{ $contact->nameContact }}</option>
         @endforeach
     </select>
 

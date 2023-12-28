@@ -9,21 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('Contacts', function (Blueprint $table) {
-            $table->id();
-            $table->string('nameContact');
-            $table->timestamps();
-           
+        Schema::table('Orders', function (Blueprint $table) {
+            $table->date('ritiro')->nullable();
         });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('Contacts');
+        Schema::table('Orders', function (Blueprint $table) {
+            
+        });
     }
 };

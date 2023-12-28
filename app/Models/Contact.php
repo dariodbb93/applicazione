@@ -11,7 +11,7 @@ class Contact extends Model
 
     protected $table = 'Contacts'; // Assicurati che il nome della tabella sia corretto
 
-    protected $fillable = ['name'];
+    protected $fillable = ['nameContact'];
 
 
     public function Order()

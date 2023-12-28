@@ -11,7 +11,7 @@ class Order extends Model
 
     protected $table = 'Orders'; // Assicurati che il nome della tabella sia corretto
 
-    protected $fillable = ['quantity', 'weight', 'time', 'contact_id', 'order_items_id'];
+    protected $fillable = ['contact_id', 'order_items_id', 'ritiro'];
 
 
     public function contact()
