@@ -3,7 +3,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Identificativo Ordine</th>
+                <th scope="col">Chiave Primaria</th>
                 <th scope="col">Quantità (Pz per i decimali usare il '.' (es. 0.5)) </th>
                 <th scope="col">Peso (Kg)</th>
                 <th scope="col"> Data di ritiro </th>
