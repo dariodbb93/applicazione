@@ -1,12 +1,14 @@
 <x-layout>
 
-    <table class="table">
+
+    <h1 class="text-center mt-3"> Gestione degli ordini </h1>
+    <table class="table table-responsive table-bordered border-dark mt-2">
         <thead>
             <tr>
                 <th scope="col">Identificativo Ordine</th>
                 <th scope="col">Quantità </th>
                 <th scope="col">Peso (Kg)</th>
-                <th scope="col"> Data di ritiro </th>
+                <th scope="col">Data di ritiro </th>
                 <th scope="col">Cliente </th>
                 <th scope="col">Cellulare </th>
                 <th scope="col">Articoli </th>

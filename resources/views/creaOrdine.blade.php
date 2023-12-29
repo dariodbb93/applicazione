@@ -3,14 +3,15 @@
     <div class="col-12 d-flex justify-content-center">
         <form action="{{route('storageOrder') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <select id="contactsDropdown" name="item_id[]" multiple class="form-select mt-3" multiple aria-label="Multiple select example">
+            <label for="item_id[]" class="fw-bold"> Articoli </label>
+            <select id="contactsDropdown" name="item_id[]" multiple class="form-select mt-1" multiple aria-label="Multiple select example">
                 @foreach ($items as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                 @endforeach
             </select>
 
             <div class="mb-3">
-                <label for="time" class="form-label mt-3"> Data di ritiro </label>
+                <label for="time" class="form-label mt-3 fw-bold"> Data di ritiro </label>
                 <input type="date" class="form-control" id="time" name="ritiro">
             </div>
 
