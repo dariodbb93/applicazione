@@ -11,7 +11,7 @@
 
             <div class="mb-3">
                 <label for="time" class="form-label mt-3"> Data di ritiro </label>
-                <input type="text" class="form-control" id="time" name="ritiro">
+                <input type="date" class="form-control" id="time" name="ritiro">
             </div>
 
             @foreach ($items as $item)
