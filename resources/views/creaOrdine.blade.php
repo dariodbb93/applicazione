@@ -10,7 +10,7 @@
             </select>
 
             <div class="mb-3">
-                <label for="time" class="form-label"> Data di ritiro </label>
+                <label for="time" class="form-label mt-3"> Data di ritiro </label>
                 <input type="text" class="form-control" id="time" name="ritiro">
             </div>
 

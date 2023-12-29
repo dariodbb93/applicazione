@@ -30,8 +30,10 @@ class PublicController extends Controller
     public function storageContact(Request $request)
     {
         $nameContact = $request->input('nameContact');
+        $tel = $request->input('tel');
         $newContact = Contact::create([
-            'nameContact' => $nameContact
+            'nameContact' => $nameContact,
+            'tel' => $tel
 
         ]);
 
@@ -96,30 +98,30 @@ class PublicController extends Controller
                 'items' => $order->orderItems->map(function ($orderItem) {
                     return optional($orderItem->item)->name;
                 })->implode(', '),
-                'quantity' => $order->orderItems->sum('quantity'), // Modifica qui
-                'weight' => $order->orderItems->sum('weight'), // Modifica qui
+                'quantity' => $order->orderItems->sum('quantity'),
+                'weight' => $order->orderItems->sum('weight'),
+                'tel' => $order->contact->tel,
             ];
         });
         return view('view', compact('orderDetails'));
     }
 
-
-
-    public function destroy($order)
+    public function destroy(Order $order)
     {
-        $orderItem = OrderItems::find($order);
 
-        if ($orderItem) {
-            $orderItem->delete();
-            return redirect(route('view'));
-        } else {
-            // Gestisci il caso in cui l'ordine non sia stato trovato
-        }
+        $order->delete();
+
+        return redirect(route('view'));
     }
 
 
-     public function riepilogo()
-     {
+
+
+
+
+
+    public function riepilogo()
+    {
 
         // $query = 'SELECT "Orders".id, "Orders".created_at, "Orders".ritiro, "Items".name, "Contacts".nameContact, "Order_items".quantity, "Order_items".weight
         // FROM "Orders"
@@ -131,6 +133,6 @@ class PublicController extends Controller
         // $result = DB::select($query);
 
 
-   return view('riepilogo');
+        return view('riepilogo');
     }
 }
