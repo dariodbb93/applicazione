@@ -115,24 +115,36 @@ class PublicController extends Controller
     }
 
 
-
-
-
-
-
     public function riepilogo()
     {
 
-        // $query = 'SELECT "Orders".id, "Orders".created_at, "Orders".ritiro, "Items".name, "Contacts".nameContact, "Order_items".quantity, "Order_items".weight
-        // FROM "Orders"
-        // INNER JOIN "Order_items" ON "Orders".order_items_id = "Order_items".id
-        // INNER JOIN "Items" ON "Order_items".item_id = "Items".id
-        // INNER JOIN "Contacts" ON "Orders".contact_id = "Contacts".id';
-
-
-        // $result = DB::select($query);
 
 
         return view('riepilogo');
     }
+
+
+
+
+    public function getContactDetails(Request $request)
+    {
+
+        $contacts = Contact::all();
+        $selectedContactId = $request->input('contact');
+        $selectedContact = Contact::find($selectedContactId);
+
+        return view('index', compact('contacts'), ['selectedContact' => $selectedContact]);
+    }
+
+
+//protezione delle rotte tramite middleware
+
+
+
+
+public function __construct()
+{
+    $this->middleware('auth')->except(['index', 'login']);
+}
+
 }

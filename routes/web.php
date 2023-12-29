@@ -24,3 +24,4 @@ Route::get('/creaOrdine', [PublicController:: class, 'creaOrdine'])->name('creaO
 Route::post('/storageOrder', [PublicController:: class, 'storageOrder'])->name('storageOrder');
 Route::get('/view', [PublicController:: class, 'view'])->name('view');
 Route::get('/riepilogo', [PublicController:: class, 'riepilogo'])->name('riepilogo');
+Route::post('/getContactDetails', [PublicController:: class, 'getContactDetails'])->name('getContactDetails');

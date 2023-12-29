@@ -4,11 +4,26 @@
     <p class="text-center">Qui c'è la lista delle anagrafiche (contatti)</p>
     <hr>
 
-    <label for="contactsDropdown">Anagrafica contatti:</label>
-    <select id="contactsDropdown" name="contact">
-        @foreach ($contacts as $contact)
-            <option value="{{ $contact->id }}">{{ $contact->nameContact }}</option>
-        @endforeach
-    </select>
+    <form action="/getContactDetails" method="post">
+        @csrf
 
+        <label for="contactsDropdown">Anagrafica contatti:</label>
+        <select id="contactsDropdown" name="contact">
+            @foreach ($contacts as $contact)
+                <option value="{{ $contact->id }}">{{ $contact->nameContact }}</option>
+            @endforeach
+        </select>
+
+        <button type="submit">Mostra Dettagli</button>
+    </form>
+
+
+
+    <div id="contactDetails">
+
+        @isset($selectedContact)
+            <p>Contatto Selezionato: {{ $selectedContact->nameContact }}</p>
+            <p>Telefono: {{ $selectedContact->tel }}</p>
+        @endisset
+    </div>
 </x-layout>
