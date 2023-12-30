@@ -5,7 +5,8 @@
     <table class="table table-responsive table-bordered border-dark mt-2">
         <thead>
             <tr>
-                <th scope="col">Identificativo Ordine</th>
+                <th scope="col">Numero Ordine</th>
+                <th scope="col">Data ordine</th>
                 <th scope="col">Quantità </th>
                 <th scope="col">Peso (Kg)</th>
                 <th scope="col">Data di ritiro </th>
@@ -18,6 +19,7 @@
             @foreach ($orderDetails as $order)
                 <tr>
                     <td>{{ $order['order_id'] }}</td>
+                     <td>{{ $order['order_date'] }}</td>
                     <td>{{ $order['quantity'] }}</td>
                     <td>{{ $order['weight'] }}</td>
                     <td>{{ $order['ritiro'] }}</td>

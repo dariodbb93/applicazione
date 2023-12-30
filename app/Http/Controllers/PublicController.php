@@ -93,6 +93,7 @@ class PublicController extends Controller
         $orderDetails = $orders->map(function ($order) {
             return [
                 'order_id' => $order->id,
+                'order_date' => $order->created_at,
                 'ritiro' => $order->ritiro,
                 'contact' => $order->contact->nameContact,
                 'items' => $order->orderItems->map(function ($orderItem) {
