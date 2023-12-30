@@ -6,10 +6,10 @@
         <thead>
             <tr>
                 <th scope="col">Numero Ordine</th>
-                <th scope="col">Data ordine</th>
+                <th scope="col">Data ordine (Anno - mese - giorno) </th>
                 <th scope="col">Quantità </th>
                 <th scope="col">Peso (Kg)</th>
-                <th scope="col">Data di ritiro </th>
+                <th scope="col">Data di ritiro (Anno - mese - giorno) </th>
                 <th scope="col">Cliente </th>
                 <th scope="col">Cellulare </th>
                 <th scope="col">Articoli </th>
