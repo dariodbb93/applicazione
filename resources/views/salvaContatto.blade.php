@@ -12,7 +12,7 @@
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="tel" required>
             </div>
             <div class="col-12">
-                <button class="btn btn-secondary" type="submit"> Salva il Contatto </button>
+                <button class="btn btn-dark" type="submit"> Salva il Contatto </button>
             </div>
         </form>
     </div>

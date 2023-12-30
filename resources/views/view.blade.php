@@ -28,7 +28,7 @@
                         <form action="{{ route('destroy', ($order['order_id'])) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-danger mt-1 btn-sm" type="submit">Elimina</button>
+                            <button class="btn btn-outline-danger mt-1 btn-sm" type="submit">Elimina</button>
                         </form>      
                     </td>
                 </tr>

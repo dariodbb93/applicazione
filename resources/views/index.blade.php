@@ -9,20 +9,20 @@
             @csrf
 
             <label for="contactsDropdown">Anagrafica contatti:</label>
-            <select id="contactsDropdown" name="contact">
+            <select id="contactsDropdown" class="form-select" name="contact">
                 @foreach ($contacts as $contact)
                     <option value="{{ $contact->id }}">{{ $contact->nameContact }}</option>
                 @endforeach
             </select>
 
-            <button type="submit">Mostra Dettagli</button>
+            <button class="btn btn-outline-dark mt-1 "type="submit">Mostra Dettagli</button>
         </form>
 
         <div id="contactDetails">
 
             @isset($selectedContact)
-                <p class="fw-bold mx-2">Contatto Selezionato: {{ $selectedContact->nameContact }}</p>
-                <p class="mx-2">Telefono: {{ $selectedContact->tel }}</p>
+                <p class="fw-bold mx-1">Contatto Selezionato: {{ $selectedContact->nameContact }}</p>
+                <p class="mx-1">Telefono: {{ $selectedContact->tel }}</p>
             @endisset
         </div>
     </div>
