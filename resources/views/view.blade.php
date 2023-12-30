@@ -1,7 +1,7 @@
 <x-layout>
 
 
-    <h1 class="text-center mt-3"> Gestione degli ordini </h1>
+    <h1 class="text-center my-3"> Gestione degli ordini </h1>
     <table class="table table-responsive table-bordered border-dark mt-2">
         <thead>
             <tr>
@@ -28,7 +28,7 @@
                         <form action="{{ route('destroy', ($order['order_id'])) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button class="btn btn-danger mt-1" type="submit">Elimina</button>
+                            <button class="btn btn-danger mt-1 btn-sm" type="submit">Elimina</button>
                         </form>      
                     </td>
                 </tr>

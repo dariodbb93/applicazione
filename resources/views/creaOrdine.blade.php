@@ -17,15 +17,15 @@
 
             @foreach ($items as $item)
                 <div class="mb-3 item-fields" id="item_{{ $item->id }}" style="display: none;">
-                    <label for="quantity_{{ $item->id }}" class="form-label">Quantità per {{ $item->name }}</label>
-                    <input type="text" class="form-control" id="quantity_{{ $item->id }}" name="quantity[{{ $item->id }}]">
+                    <label for="quantity_{{ $item->id }}" class="form-label fw-bold">Quantità per {{ $item->name }}</label>
+                    <input type="number" class="form-control" id="quantity_{{ $item->id }}" name="quantity[{{ $item->id }}]">
 
-                    <label for="weight_{{ $item->id }}" class="form-label">Peso in Kg per {{ $item->name }}</label>
-                    <input type="text" class="form-control" id="weight_{{ $item->id }}" name="weight[{{ $item->id }}]">
+                    <label for="weight_{{ $item->id }}" class="form-label fw-bold">Peso in Kg per {{ $item->name }}</label>
+                    <input type="number" class="form-control" id="weight_{{ $item->id }}" name="weight[{{ $item->id }}]">
                 </div>
             @endforeach
-
-            <select id="contactsDropdown" name="contact_id">
+            <label for="contactsDropdown" class="form-label mt-3 fw-bold"> Cliente </label>
+            <select class="form-select" aria-label="Default select example" id="contactsDropdown" name="contact_id">
                 @foreach ($contacts as $contact)
                     <option value="{{ $contact->id }}">{{ $contact->nameContact }}</option>
                 @endforeach
@@ -46,10 +46,8 @@
 
             var selectedItems = $(this).val();
 
-            // Nascondi tutti i campi di input degli articoli
             $('.item-fields').hide();
 
-            // Mostra solo i campi di input per gli articoli selezionati
             selectedItems.forEach(function (itemId) {
                 $('#item_' + itemId).show();
             });
