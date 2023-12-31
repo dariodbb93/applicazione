@@ -77,7 +77,7 @@ class PublicController extends Controller
         $order->update(['order_items_id' => $order->orderItems()->orderBy('id')->first()->id]);
 
 
-        return redirect(route('index'))->with('success', 'Ordine creato con successo!');
+        return redirect(route('view'))->with('success', 'Ordine creato con successo!');
     }
 
 
