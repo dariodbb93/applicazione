@@ -2,7 +2,7 @@
 
 
     <h1 class="text-center my-3"> Gestione degli ordini </h1>
-    <table class="table table-responsive  table-hover table-sm  mt-2">
+    <table class="table table-responsive table-bordered table-hover table-sm mt-2">
         <thead>
             <tr>
                 <th scope="col">Numero Ordine</th>
