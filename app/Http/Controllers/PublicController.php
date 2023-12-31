@@ -17,7 +17,7 @@ class PublicController extends Controller
 
     public function index()
     {
-        $contacts = Contact::all();
+        $contacts = Contact::orderBy('nameContact', 'asc')->get();
         return view('index', compact('contacts'));
     }
 
@@ -43,7 +43,7 @@ class PublicController extends Controller
     public function creaOrdine()
     {
         $items = Item::all();
-        $contacts = Contact::all();
+        $contacts = Contact::orderBy('nameContact', 'asc')->get();
         return view('creaOrdine', compact('contacts', 'items'));
 
 
