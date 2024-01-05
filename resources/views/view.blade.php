@@ -2,9 +2,9 @@
 
 
     <h1 class="text-center mx-1 my-3"> Gestione degli ordini </h1>
-    <button id="exportButton" class="btn btn-outline-primary mb-3"> Esporta la griglia in file di testo </button>
+    <button id="exportButton" class="btn btn-outline-success mb-3 mx-3"> Esporta la griglia in file di testo </button>
 
-    <table class="table table-responsive table-bordered table-hover table-sm mt-2">
+    <table class="table table-responsive table-bordered table-hover table-sm mt-2 text-center">
         <thead>
             <tr>
                 <th scope="col">Numero Ordine</th>
@@ -34,14 +34,19 @@
                             @method('delete')
                             <button class="btn btn-outline-danger mt-1 btn-sm" type="submit">Elimina</button>
                         </form>
+                        <form action="{{route('export', $order['order_id'])}}" method="GET">
+                            @csrf
+                            <button class="btn btn-outline-success mt-1 btn-sm" type="submit">Stampa</button>
+                        </form>
                     </td>
+        
                 </tr>
             @endforeach
         </tbody>
     </table>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById('exportButton').addEventListener('click', function () {
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('exportButton').addEventListener('click', function() {
                 exportTableToText();
             });
 

@@ -25,3 +25,4 @@ Route::post('/storageOrder', [PublicController:: class, 'storageOrder'])->name('
 Route::get('/view', [PublicController:: class, 'view'])->name('view');
 Route::get('/riepilogo', [PublicController:: class, 'riepilogo'])->name('riepilogo');
 Route::post('/getContactDetails', [PublicController:: class, 'getContactDetails'])->name('getContactDetails');
+Route::get('/export{order}', [PublicController:: class, 'export'])->name('export');

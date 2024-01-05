@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-
-
+use Fpdf\Fpdf;
 use App\Models\Item;
 use App\Models\Order;
 use App\Models\Contact;
 use App\Models\OrderItems;
+use Com\Tecnick\Pdf\Tcpdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 
 class PublicController extends Controller
 {
@@ -109,22 +110,16 @@ class PublicController extends Controller
 
     public function destroy(Order $order)
     {
-
         $order->delete();
 
         return redirect(route('view'));
     }
 
-
     public function riepilogo()
     {
 
-
-
         return view('riepilogo');
     }
-
-
 
 
     public function getContactDetails(Request $request)
@@ -137,15 +132,54 @@ class PublicController extends Controller
         return view('index', compact('contacts'), ['selectedContact' => $selectedContact]);
     }
 
+    //protezione delle rotte tramite middleware
 
-//protezione delle rotte tramite middleware
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'login']);
+    }
 
 
 
+    public function export(Order $order)
+    {
+        $pdf = new PDF();
+        $pdf->AliasNbPages();
+        $pdf->SetFont('Arial', '', 16);
+        $pdf->AddPage();
 
-public function __construct()
-{
-    $this->middleware('auth')->except(['index', 'login']);
+        $pdf->MultiCell(0, 10, 
+        "Ordine di Ritiro: " . "\n" .
+        "Numero Ordine: " . $order->id . "\n" . 
+        "Data Ordine: " . $order->created_at . "\n" . 
+        "Data di ritiro: " . $order->ritiro . "\n" . 
+        "Cliente: " . $order->contact->nameContact . "\n" . 
+        "Articoli: " . $order->orderItems->map(function ($orderItem) {
+            return optional($orderItem->item)->name;
+        })->implode(', ') . "\n" . 
+        "Quantita' totale: " . $order->orderItems->sum('quantity') . "\n" . 
+        "Peso totale: " . $order->orderItems->sum('weight')
+    );
+    
+
+        $output = $pdf->Output('', 'S');
+
+        return Response::make($output, 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="ordine.pdf"',
+        ]);
+    }
 }
 
+
+class PDF extends Fpdf
+{
+    public function __construct(
+        $orientation = 'P',
+        $unit = 'mm',
+        $size = 'letter'
+    ) {
+        parent::__construct($orientation, $unit, $size);
+        // ...
+    }
 }

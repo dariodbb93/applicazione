@@ -12,9 +12,10 @@
             </select>
 
             <div class="mb-3">
-                <label for="time" class="form-label mt-3 fw-bold"> Data di ritiro </label>
-                <input type="date" class="form-control" id="time" name="ritiro">
+                <label for="dateTime" class="form-label mt-3 fw-bold">Data e Ora di ritiro</label>
+                <input type="datetime-local" class="form-control" id="time" name="ritiro">
             </div>
+            
 
             @foreach ($items as $item)
                 <div class="mb-3 item-fields" id="item_{{ $item->id }}" style="display: none;">
