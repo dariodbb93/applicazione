@@ -15,7 +15,7 @@
                 <label for="dateTime" class="form-label mt-3 fw-bold">Data e Ora di ritiro</label>
                 <input type="datetime-local" class="form-control" id="time" name="ritiro">
             </div>
-            
+
 
             @foreach ($items as $item)
                 <div class="mb-3 item-fields" id="item_{{ $item->id }}" style="display: none;">
@@ -26,15 +26,18 @@
 
                     <label for="weight_{{ $item->id }}" class="form-label fw-bold">Peso in Kg per
                         {{ $item->name }}</label>
+                    <label for="weight_{{ $item->id }}" class="form-label fw-bold">Peso in Kg per
+                        {{ $item->name }}</label>
                     <input type="number" class="form-control" id="weight_{{ $item->id }}"
-                        name="weight[{{ $item->id }}]">
+                        name="weight[{{ $item->id }}]" step="0.1">
+
                 </div>
             @endforeach
             <label for="contactsDropdown" class="form-label mt-3 fw-bold"> Cliente </label>
             <select class="form-select" aria-label="Default select example" id="contactsDropdown" name="contact_id">
                 @foreach ($contacts as $contact)
-                    <option value="{{ $contact->id }}">{{ $contact->nameContact }} | Telefono:{{$contact->tel}}</option>
-
+                    <option value="{{ $contact->id }}">{{ $contact->nameContact }} | Telefono:{{ $contact->tel }}
+                    </option>
                 @endforeach
             </select>
 

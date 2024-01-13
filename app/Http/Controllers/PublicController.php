@@ -158,7 +158,7 @@ class PublicController extends Controller
             return optional($orderItem->item)->name;
         })->implode(', ') . "\n" . 
         "Quantita' totale: " . $order->orderItems->sum('quantity') . "\n" . 
-        "Peso totale: " . $order->orderItems->sum('weight')
+        "Peso totale (Kg): " . $order->orderItems->sum('weight')
     );
     
 
