@@ -20,8 +20,7 @@ return new class extends Migration
             $table->foreign('order_id')->references('id')->on('Orders')->onDelete('cascade');
             $table->foreign('item_id')->references('id')->on('Items')->onDelete('cascade');
             // Altri campi, se necessario
-            $table->timestamps();
-        });
+            $table->timestampsTz();  });
     }
 
     /**
