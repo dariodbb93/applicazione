@@ -138,7 +138,10 @@ class PublicController extends Controller
 
     public function view()
     {
-        $orders = Order::with(['contact', 'orderItems.item'])->latest()->paginate(30);
+        $orders = Order::with(['contact', 'orderItems.item'])
+                        ->latest()
+                        ->orderBy('id', 'desc') // Ordina in modo decrescente rispetto all'order_id
+                        ->paginate(30);
     
         $orderDetails = $orders->map(function ($order) {
             return [
@@ -154,9 +157,6 @@ class PublicController extends Controller
                 'tel' => $order->contact->tel,
             ];
         });
-    
-        // Ordina $orderDetails in modo decrescente rispetto all'id
-        $orderDetails = $orderDetails->sortByDesc('order_id');
     
         return view('view', compact('orders', 'orderDetails'));
     }
