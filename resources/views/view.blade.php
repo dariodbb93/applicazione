@@ -2,7 +2,9 @@
 
 
     <h1 class="text-center mx-1 my-3"> Gestione degli ordini </h1>
-    <button id="exportButton" class="btn btn-outline-success mb-3 mx-3"> Esporta la griglia in file di testo </button>
+    <hr>
+    
+    <button id="exportButton" class="btn btn-outline-success mb-3 mx-3"> Esporta in csv </button>
 
     <table class="table table-responsive table-bordered table-hover table-sm mt-2 text-center">
         <thead>
@@ -49,7 +51,10 @@
                 </tr>
             @endforeach
         </tbody>
+
     </table>
+    {{ $orders->links() }}
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('exportButton').addEventListener('click', function() {

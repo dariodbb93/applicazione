@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Pagination\Paginator;
 
 class PublicController extends Controller
 {
@@ -137,8 +138,8 @@ class PublicController extends Controller
 
     public function view()
     {
-        $orders = Order::with(['contact', 'orderItems.item'])->latest()->get();
-
+        $orders = Order::with(['contact', 'orderItems.item'])->latest()->paginate(30);
+    
         $orderDetails = $orders->map(function ($order) {
             return [
                 'order_id' => $order->id,
@@ -153,12 +154,13 @@ class PublicController extends Controller
                 'tel' => $order->contact->tel,
             ];
         });
-
+    
         // Ordina $orderDetails in modo decrescente rispetto all'id
         $orderDetails = $orderDetails->sortByDesc('order_id');
-
-        return view('view', compact('orderDetails'));
+    
+        return view('view', compact('orders', 'orderDetails'));
     }
+    
 
     public function destroy(Order $order)
     {
