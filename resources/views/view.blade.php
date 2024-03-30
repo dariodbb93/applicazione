@@ -38,6 +38,12 @@
                             @csrf
                             <button class="btn btn-outline-success mt-1 btn-sm" type="submit">Stampa</button>
                         </form>
+                        <form action="{{ route('edit', $order['order_id']) }}" method="GET">
+                            @csrf
+                            {{-- @method('GET') --}}
+                            <button class="btn btn-outline-warning mt-1 btn-sm" type="submit">Modifica</button>
+                        </form>
+                        
                     </td>
         
                 </tr>

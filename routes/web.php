@@ -26,3 +26,8 @@ Route::get('/view', [PublicController:: class, 'view'])->name('view');
 Route::get('/riepilogo', [PublicController:: class, 'riepilogo'])->name('riepilogo');
 Route::post('/getContactDetails', [PublicController:: class, 'getContactDetails'])->name('getContactDetails');
 Route::get('/export{order}', [PublicController:: class, 'export'])->name('export');
+Route::put('/updateOrder/{order}', [PublicController:: class,  'updateOrder'])->name('updateOrder');
+Route::get('/edit/{order}', [PublicController:: class, 'edit'])->name('edit');
+
+
+
