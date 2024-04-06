@@ -17,6 +17,7 @@
                 <th scope="col">Cliente </th>
                 <th scope="col">Cellulare </th>
                 <th scope="col">Articoli </th>
+                <th scope="col">Note aggiuntive </th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
                     <td>{{ $order['contact'] }}</td>
                     <td>{{ $order['tel'] }}</td>
                     <td>{{ $order['items'] }}</td>
+                    <td>{{ $order['note'] }}</td>
                     <td>
                         <form action="{{ route('destroy', $order['order_id']) }}" method="POST">
                             @csrf

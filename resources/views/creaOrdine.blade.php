@@ -41,6 +41,12 @@
                 @endforeach
             </select>
 
+            <div class="form-floating">
+
+                <textarea class="form-control mt-3" placeholder="Inserisci una nota" id="floatingTextarea" name ="note"></textarea>
+                <label for="floatingTextarea"> Note </label>
+            </div>
+
             <div class="col-12">
                 <button class="btn btn-secondary mt-3" type="submit"> Crea Ordine </button>
             </div>

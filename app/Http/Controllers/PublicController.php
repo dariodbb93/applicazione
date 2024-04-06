@@ -63,6 +63,7 @@ class PublicController extends Controller
 
             'contact_id' => $request->input('contact_id'),
             'ritiro' => Carbon::parse($request->input('ritiro')),
+            'note' => $request->input("note")
         ]);
 
         foreach ($selectedItems as $item_id) {
@@ -73,6 +74,7 @@ class PublicController extends Controller
                 'item_id' => $item_id,
                 'quantity' => $request->input("quantity.$item_id"),
                 'weight' => $request->input("weight.$item_id"),
+
 
             ]);
         }
@@ -140,7 +142,7 @@ class PublicController extends Controller
     {
         $orders = Order::with(['contact', 'orderItems.item'])
                         ->latest()
-                        ->orderBy('id', 'desc') // Ordina in modo decrescente rispetto all'order_id
+                        ->orderBy('id', 'desc') 
                         ->paginate(30);
     
         $orderDetails = $orders->map(function ($order) {
@@ -155,6 +157,7 @@ class PublicController extends Controller
                 'quantity' => $order->orderItems->sum('quantity'),
                 'weight' => $order->orderItems->sum('weight'),
                 'tel' => $order->contact->tel,
+                'note' => $order->note
             ];
         });
     
@@ -214,7 +217,8 @@ class PublicController extends Controller
                     return optional($orderItem->item)->name;
                 })->implode(', ') . "\n" .
                 "Quantita' totale: " . $order->orderItems->pluck('quantity') . "\n" .
-                "Peso totale (Kg): " . $order->orderItems->pluck('weight')
+                "Peso totale (Kg): " . $order->orderItems->pluck('weight')  . "\n" .
+                "Note aggiuntive: " . $order->note,
         );
 
 
@@ -225,6 +229,12 @@ class PublicController extends Controller
             'Content-Disposition' => 'attachment; filename="ordine.pdf"',
         ]);
     }
+
+
+
+
+
+
 }
 
 
