@@ -4,7 +4,6 @@
     <h1 class="text-center mx-1 my-3"> Gestione degli ordini </h1>
     <hr>
     
-    <button id="exportButton" class="btn btn-outline-success mb-3 mx-3"> Esporta in csv </button>
 
     <table class="table table-responsive table-bordered table-hover table-sm mt-2 text-center">
         <thead>
@@ -56,35 +55,4 @@
 
     </table>
     {{ $orders->links() }}
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById('exportButton').addEventListener('click', function() {
-                exportTableToText();
-            });
-
-            function exportTableToText() {
-                var table = document.querySelector('.table');
-                var rows = table.querySelectorAll('tr');
-                var csv = [];
-
-                for (var i = 0; i < rows.length; i++) {
-                    var row = [],
-                        cols = rows[i].querySelectorAll('td,th');
-
-                    for (var j = 0; j < cols.length; j++)
-                        row.push(cols[j].innerText);
-
-                    csv.push(row.join(','));
-                }
-
-                var textToSave = csv.join('\n');
-                var hiddenElement = document.createElement('a');
-                hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(textToSave);
-                hiddenElement.target = '_blank';
-                hiddenElement.download = 'tabella_ordini.csv';
-                hiddenElement.click();
-            }
-        });
-    </script>
 </x-layout>

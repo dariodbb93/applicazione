@@ -191,10 +191,10 @@ class PublicController extends Controller
 
     //protezione delle rotte tramite middleware
 
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['index', 'login']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->except(['index', 'login']);
+    // }
 
 
 
