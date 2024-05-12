@@ -18,9 +18,6 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('view') }}"> Gestione Ordini </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('riepilogo') }}"> Riepilogo Ordinativi </a>
-                </li>
         </div>
     </div>
 </nav>
