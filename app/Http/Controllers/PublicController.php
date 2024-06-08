@@ -19,9 +19,20 @@ class PublicController extends Controller
 
     public function index()
     {
-        $contacts = Contact::orderBy('nameContact', 'asc')->get();
+        $contacts = Contact::orderBy('nameContact', 'asc')->paginate(4);
         return view('index', compact('contacts'));
     }
+    
+
+    public function destroyContact(Contact $contact){
+
+        $contact->delete();
+
+        return redirect(route('index'));
+
+    }
+
+
 
     public function salvaContatto()
     {

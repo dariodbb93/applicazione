@@ -29,6 +29,8 @@ Route::get('/export{order}', [PublicController:: class, 'export'])->name('export
 Route::put('/updateOrder/{order}', [PublicController:: class,  'updateOrder'])->name('updateOrder');
 Route::get('/edit/{order}', [PublicController:: class, 'edit'])->name('edit');
 Route::post('/note', [PublicController:: class, 'note'])->name('note');
+Route::delete('/destroyContact/{contact}', [PublicController:: class, 'destroyContact'])->name('destroyContact');
+
 
 
 

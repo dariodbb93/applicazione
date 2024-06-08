@@ -5,25 +5,33 @@
     <hr class="my-4">
 
     <div class="col-12 d-flex justify-content-center">
-        <form action="/getContactDetails" method="post">
-            @csrf
 
-            <label for="contactsDropdown">Anagrafica contatti:</label>
-            <select id="contactsDropdown" class="form-select" name="contact">
+        <table class="table table-sm table-responsive table-bordered table-hover table-sm mt-2 text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Telefono </th>
+                </tr>
+            </thead>
+            <tbody>
                 @foreach ($contacts as $contact)
-                    <option value="{{ $contact->id }}">{{ $contact->nameContact }}</option>
+                    <tr>
+                        <td>{{ $contact->nameContact }}</td>
+                        <td>{{ $contact->tel }}</td>
+                        <td>
+                            <form action="{{ route('destroyContact', $contact['id']) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-outline-danger mt-1 btn-sm" type="submit">Elimina</button>
+                            </form>
+                            </td>
+                  
+                    </tr>
                 @endforeach
-            </select>
+                
+            </tbody>
 
-            <button class="btn btn-outline-dark mt-1 "type="submit">Mostra Dettagli</button>
-        </form>
-
-        <div id="contactDetails">
-
-            @isset($selectedContact)
-                <p class="fw-bold mx-1">Contatto Selezionato: {{ $selectedContact->nameContact }}</p>
-                <p class="mx-1">Telefono: {{ $selectedContact->tel }}</p>
-            @endisset
-        </div>
+        </table>
     </div>
+    {{ $contacts->links() }}
 </x-layout>
