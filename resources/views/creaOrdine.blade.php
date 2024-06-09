@@ -1,10 +1,13 @@
 <x-layout>
+    <h1 class="text-center"> Crea Ordine </h1>
+
+    <hr>
 
     <div class="col-12 d-flex justify-content-center">
         <form action="{{ route('storageOrder') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <label for="item_id[]" class="fw-bold"> Articoli </label>
-            <select id="contactsDropdown" name="item_id[]" multiple class="form-select mt-1" multiple
+            <select id="contactsDropdown" name="item_id[]" multiple class="form-select mt-1" size="5" multiple
                 aria-label="Multiple select example">
                 @foreach ($items as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>

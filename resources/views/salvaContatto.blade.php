@@ -1,5 +1,7 @@
 <x-layout>
+    <h1 class="text-center"> Crea Anagrafica </h1>
 
+    <hr>
     <div class="col-12 d-flex justify-content-center">
         <form action="{{ route('storageContact') }}" method="post" enctype="multipart/form-data">
             @csrf

@@ -1,123 +1,20 @@
-.backgroundNavbar{
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
 
+.backgroundNavbar {
     background-color: #333;
-    
-
 }
 
-.minHeightHeader{
-
-    min-height: 40vh;
-
-
+.minHeightHeader {
+    min-height: 20vh;
 }
-
-
-.minHeightContent {
-
-    min-height: 30vh;
-
-
-}
-
-
 
 .contentHeight {
-
-    min-height: 75vh;
+    flex: 1;
 }
 
-
-.footerHeight {
-
-    min-height: 17vh;
-
-
-}
-
-
-.footerHeight2 {
-
-    min-height: 25vh;
-
-
-}
-
-
-.navBackground {
-
-    background-color: #333;
-
-}
-
-
-
-.carattere {
-    font-family: monospace;
-}
-
-
-.bordo {
-
-    border: 1px solid black;
-    border-radius: 5%;
-}
-
-.texture {
-    background-image: url('header.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.83;
-
-
-}
-
-.bordo {
-    border: solid 1px black;
-}
-
-
-
-.headerBackground {
-    background-color: #333;
-    opacity: 0.8;
-}
-
-.footerBackground {
-    background-color: #065c5cc2;
-    opacity: 0.7;
-}
-
-
-.img {
-    
-    width: 100%;
-
-}
-
-.carta {
-
-    height: 21rem;
-
-
-}
-
-iframe {
-    display: block;
-}
-
-
-.headerHeight {
-
-
-    min-height: 20vh;
-
-
-
-}
-
-.altezzaContenitore{
-
-    min-height: 45vh;
-}
