@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\HistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +30,8 @@ Route::put('/updateOrder/{order}', [PublicController:: class,  'updateOrder'])->
 Route::get('/edit/{order}', [PublicController:: class, 'edit'])->name('edit');
 Route::post('/note', [PublicController:: class, 'note'])->name('note');
 Route::delete('/destroyContact/{contact}', [PublicController:: class, 'destroyContact'])->name('destroyContact');
+Route::get('/history', [HistoryController:: class, 'history'])->name('history');
+Route::get('/historyDetail', [HistoryController:: class, 'historyDetail'])->name('historyDetail');
 
 
 

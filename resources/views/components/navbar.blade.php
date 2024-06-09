@@ -18,6 +18,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('view') }}"> Gestione Ordini </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route('history') }}"> Storico </a>
+                </li>
         </div>
     </div>
 </nav>

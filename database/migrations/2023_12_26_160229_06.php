@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('Contacts', function (Blueprint $table) {
             $table->id();
             $table->string('nameContact');
-            $table->timestampsTz();          
+            $table->date('created_at');          
+            $table->date('updated_at');          
         });
     }
 

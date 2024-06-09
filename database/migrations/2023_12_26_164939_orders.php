@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('contact_id'); // Aggiunta la colonna contact_id
             $table->foreign('contact_id')->references('id')->on('Contacts')->onDelete('cascade');
-            $table->timestampTz('created_at')->useCurrent();
-            $table->timestampTz('updated_at')->useCurrent();
+            $table->date('created_at')->useCurrent();
+            $table->date('updated_at')->useCurrent();
         });
     } 
 

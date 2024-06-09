@@ -8,7 +8,6 @@ class OrderItems extends Model
 {
     protected $table = 'Order_items';
     protected $fillable = ['order_id', 'item_id', 'quantity', 'weight'];
-    // Altri attributi, se necessario
 
 
     public function order()
