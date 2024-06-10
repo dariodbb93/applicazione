@@ -14,7 +14,7 @@ class HistoryController extends Controller
     public function history(Contact $contacts)
     {
 
-        $contacts = Contact::orderBy('nameContact', 'asc')->paginate(4);
+        $contacts = Contact::orderBy('nameContact', 'asc')->paginate();
         return view('history', compact('contacts'));
     }
 
@@ -23,10 +23,7 @@ class HistoryController extends Controller
     {
 
         $contactId = $request->input('id');
-
         $orders = Order::where('contact_id', $contactId)->get();
-        // dd('orders');
-        
         return view('historyDetail', compact('orders'));
 
     }
